@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { Text } from "react-native-paper";
 import { useAuth } from "../context/auth";
+import { Link } from "expo-router";
 
 interface IPost {
     id: number
@@ -22,6 +23,8 @@ export default function Home() {
         <ScrollView style={styles.container}>
             <Text variant="displaySmall">Posts</Text>
             <Text variant="headlineSmall">Olá {auth.user.email}</Text>
+            <Link style={{ marginTop: 30 }} href="/sensors">Sensores</Link>
+            <Link style={{ marginTop: 30 }} href="/camera">Camera</Link>
             {posts.map(post => (
                 <View key={post.id} style={styles.mt20}>
                     <Text variant="titleMedium">{post.id}</Text>

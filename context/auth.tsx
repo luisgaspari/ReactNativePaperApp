@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<IUserLogin>({ email: "", password: "" })
 
     const handleLogin = () => {
-        if (user.email === 'admin' && user.password === 'admin') {
+        if (user.email === 'Admin' && user.password === 'Admin') {
             setUser(user)
             router.push('home')
         } else {
