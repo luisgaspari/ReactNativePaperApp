@@ -23,8 +23,9 @@ export default function Home() {
         <ScrollView style={styles.container}>
             <Text variant="displaySmall">Posts</Text>
             <Text variant="headlineSmall">Olá {auth.user.email}</Text>
-            <Link style={{ marginTop: 30 }} href="/sensors">Sensores</Link>
-            <Link style={{ marginTop: 30 }} href="/camera">Camera</Link>
+            {/* <Link style={{ marginTop: 30 }} href="/sensors">Sensores</Link> */}
+            {/* <Link style={{ marginTop: 30 }} href="/camera">Camera</Link> */}
+            <Link style={{ marginTop: 30 }} href="/profile">Perfil</Link>
             {posts.map(post => (
                 <View key={post.id} style={styles.mt20}>
                     <Text variant="titleMedium">{post.id}</Text>
