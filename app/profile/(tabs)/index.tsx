@@ -1,10 +1,15 @@
-import { Link } from 'expo-router';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text } from "react-native-paper"
+import { Button } from "react-native-paper"
+import { router } from "expo-router"
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>Tab Home</Text>
+      <Text variant="displaySmall">Tab Home</Text>
+      <Button mode="elevated" style={styles.mt20} onPress={() => router.replace('home')}>
+        Voltar para Home
+      </Button>
     </View>
   );
 }

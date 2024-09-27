@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { View, StyleSheet } from "react-native"
 import { Avatar, Button } from "react-native-paper"
 import * as FileSystem from 'expo-file-system'
-import { Link } from "expo-router"
+import { router } from "expo-router"
 
 export default function Camera() {
     const [perm, reqPerm] = useCameraPermissions()
@@ -51,7 +51,9 @@ export default function Camera() {
             <Button mode="elevated" style={styles.mt20} onPress={verificarFoto}>
                 Verificar Foto
             </Button>
-            <Link style={{ marginTop: 30 }} href="/home">Voltar para Home</Link>
+            <Button mode="elevated" style={styles.mt20} onPress={() => router.replace('home')}>
+                Voltar para Home
+            </Button>
         </View>
     )
 }

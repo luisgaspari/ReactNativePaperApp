@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
-import { Text } from "react-native-paper";
-import { useAuth } from "../context/auth";
-import { Link } from "expo-router";
+import { useEffect, useState } from "react"
+import { View, StyleSheet, ScrollView } from "react-native"
+import { Text } from "react-native-paper"
+import { useAuth } from "../context/auth"
+import { Link } from "expo-router"
+import { Button } from "react-native-paper"
+import { router } from "expo-router"
+
 
 interface IPost {
     id: number
@@ -21,11 +24,11 @@ export default function Home() {
 
     return (
         <ScrollView style={styles.container}>
-            <Text variant="displaySmall">Posts</Text>
+            <Button mode="elevated" style={styles.mt20} onPress={() => router.replace('profile')}>
+                Profile - Tabs
+            </Button>
             <Text variant="headlineSmall">Olá {auth.user.email}</Text>
-            {/* <Link style={{ marginTop: 30 }} href="/sensors">Sensores</Link> */}
-            {/* <Link style={{ marginTop: 30 }} href="/camera">Camera</Link> */}
-            <Link style={{ marginTop: 30 }} href="/profile">Perfil</Link>
+            <Text variant="displaySmall">Posts</Text>
             {posts.map(post => (
                 <View key={post.id} style={styles.mt20}>
                     <Text variant="titleMedium">{post.id}</Text>
