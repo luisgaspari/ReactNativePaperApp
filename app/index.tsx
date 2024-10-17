@@ -1,9 +1,20 @@
 import { View, StyleSheet } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
 import { useAuth } from '../context/auth'
+import * as SecureStore from 'expo-secure-store'
+import { useEffect } from 'react'
+import { router } from 'expo-router'
 
 export default function Login() {
     const auth = useAuth()
+
+    // useEffect(() => {
+    //     async function getToken() {
+    //         const token = await SecureStore.getItemAsync('token')
+    //         if (token) router.push('home')
+    //     }
+    //     getToken()
+    // }, [])
 
     return (
         <View style={styles.container}>

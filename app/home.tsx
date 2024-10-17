@@ -5,6 +5,7 @@ import { useAuth } from "../context/auth"
 import { Link } from "expo-router"
 import { Button } from "react-native-paper"
 import { router } from "expo-router"
+import * as SecureStore from 'expo-secure-store'
 
 
 interface IPost {
@@ -15,11 +16,17 @@ interface IPost {
 
 export default function Home() {
     const auth = useAuth()
-    const [posts, setPosts] = useState<IPost[]>([])
+    // const [posts, setPosts] = useState<IPost[]>([])
+    const [token, setToken] = useState('')
     useEffect(() => {
-        fetch('https://jsonplaceholder.org/posts')
-            .then(response => response.json())
-            .then(json => setPosts(json))
+        // fetch('https://jsonplaceholder.org/posts')
+        //     .then(response => response.json())
+        //     .then(json => setPosts(json))
+        async function getToken() {
+            const token = await SecureStore.getItemAsync('token')
+            if (token) setToken(token)
+        }
+        getToken()
     }, [])
 
     return (
@@ -28,14 +35,15 @@ export default function Home() {
                 Profile - Tabs
             </Button>
             <Text variant="headlineSmall">Olá {auth.user.email}</Text>
+            <Text variant="headlineSmall">Token: {token}</Text>
             <Text variant="displaySmall">Posts</Text>
-            {posts.map(post => (
+            {/* {posts.map(post => (
                 <View key={post.id} style={styles.mt20}>
                     <Text variant="titleMedium">{post.id}</Text>
                     <Text variant="bodyMedium">{post.title}</Text>
                     <Text variant="labelLarge">{post.status}</Text>
                 </View>
-            ))}
+            ))} */}
         </ScrollView>
     )
 }
